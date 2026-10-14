@@ -1,0 +1,1066 @@
+
+/* ==============================
+   1. Global styles and variables
+================================= */
+
+:root {
+    --background: #f7f7f2;
+    --surface: #ffffff;
+    --primary: #355c4a;
+    --primary-dark: #254536;
+    --primary-light: #e7efe8;
+    --text: #26352d;
+    --muted: #6d786f;
+    --border: #e2e7df;
+    --danger: #b84242;
+    --danger-light: #fff0ef;
+
+    --status-to-read-bg: #f9eed7;
+    --status-to-read-text: #805a19;
+
+    --status-reading-bg: #dcebf8;
+    --status-reading-text: #245781;
+
+    --status-finished-bg: #dceee1;
+    --status-finished-text: #28613b;
+
+    --radius: 14px;
+    --shadow: 0 4px 18px rgba(40, 60, 45, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+    outline: 3px solid #8caf99;
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+
+/* ==============================
+   2. Header
+================================= */
+
+.site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+    width: min(1100px, calc(100% - 40px));
+    min-height: 76px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 1.7rem;
+}
+
+.header-tagline {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+
+/* ==============================
+   3. Welcome section
+================================= */
+
+.welcome-section {
+    padding: 42px 0 28px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: anywhere;
+}
+
+.welcome-section h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.welcome-text {
+    max-width: 650px;
+    margin: 14px 0 0;
+    color: var(--muted);
+}
+
+
+/* ==============================
+   4. Shared panels and headings
+================================= */
+
+.panel {
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.65rem;
+    line-height: 1.3;
+}
+
+.heading-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    background: var(--primary-light);
+    border-radius: 12px;
+    font-size: 1.35rem;
+}
+
+.section-description {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.muted-text {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+
+/* ==============================
+   5. Book entry form
+================================= */
+
+#add-book-section {
+    margin-bottom: 34px;
+}
+
+#book-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label,
+.search-container label {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.search-input-wrapper input {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 10px 13px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid #cfd8ce;
+    border-radius: 8px;
+    transition: border-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.search-input-wrapper input:focus {
+    border-color: var(--primary);
+    outline: 2px solid rgba(53, 92, 74, 0.12);
+    outline-offset: 1px;
+}
+
+.form-group input::placeholder,
+.search-input-wrapper input::placeholder {
+    color: #89928a;
+}
+
+.field-error {
+    min-height: 0;
+    color: var(--danger);
+    font-size: 0.8rem;
+}
+
+.field-error:not(:empty) {
+    min-height: 18px;
+}
+
+.input-error {
+    border-color: var(--danger) !important;
+    background: #fffafa !important;
+}
+
+.btn {
+    min-height: 44px;
+    padding: 10px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.15s ease,
+                border-color 0.15s ease;
+}
+
+.btn-primary {
+    color: #fff;
+    background: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+#book-form > .btn {
+    align-self: end;
+    justify-self: start;
+}
+
+.feedback-message {
+    margin: 12px 0 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.feedback-message:empty {
+    display: none;
+}
+
+.feedback-success {
+    color: var(--primary);
+}
+
+.feedback-error {
+    color: var(--danger);
+}
+
+
+/* ==============================
+   6. Reading statistics
+================================= */
+
+.statistics-section {
+    margin-bottom: 42px;
+}
+
+.statistics-section .section-heading {
+    margin-bottom: 18px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.stat-card {
+    min-width: 0;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.stat-total {
+    border-top-color: #6a806c;
+}
+
+.stat-to-read {
+    border-top-color: #c89a43;
+}
+
+.stat-reading {
+    border-top-color: #6397c2;
+}
+
+.stat-finished {
+    border-top-color: #5a9a6c;
+}
+
+.stat-label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.87rem;
+    font-weight: 600;
+}
+
+.stat-number {
+    margin: 7px 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.stat-description {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.completion-panel {
+    margin-top: 18px;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.completion-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.completion-heading h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.completion-heading > span {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+    background: #e8ece6;
+    border-radius: 999px;
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background: var(--primary);
+    border-radius: inherit;
+    transition: width 0.2s ease;
+}
+
+.completion-panel .muted-text {
+    margin-top: 10px;
+}
+
+
+/* ==============================
+   7. Book collection and search
+================================= */
+
+.collection-section {
+    margin-bottom: 42px;
+}
+
+.collection-heading {
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.collection-count {
+    padding: 6px 12px;
+    color: var(--primary);
+    background: var(--primary-light);
+    border-radius: 999px;
+    font-size: 0.83rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.search-container {
+    margin-bottom: 22px;
+}
+
+.search-container label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-input-wrapper > span {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    color: var(--muted);
+    font-size: 1.5rem;
+    transform: translateY(-52%);
+    pointer-events: none;
+}
+
+.search-input-wrapper input {
+    padding-left: 43px;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.book-card {
+    min-width: 0;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.book-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.book-card h3 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.book-author {
+    margin: 8px 0 14px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-to-read {
+    color: var(--status-to-read-text);
+    background: var(--status-to-read-bg);
+}
+
+.status-reading {
+    color: var(--status-reading-text);
+    background: var(--status-reading-bg);
+}
+
+.status-finished {
+    color: var(--status-finished-text);
+    background: var(--status-finished-bg);
+}
+
+.book-date {
+    margin: 0 0 15px;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.book-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.book-status-select {
+    flex: 1;
+    min-width: 120px;
+    min-height: 40px;
+    padding: 7px 9px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 0.85rem;
+}
+
+.btn-delete {
+    min-height: 40px;
+    padding: 8px 12px;
+    color: var(--danger);
+    background: var(--danger-light);
+    border: 1px solid #f1d4d1;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.btn-delete:hover {
+    background: #ffe2df;
+}
+
+
+/* ==============================
+   8. Empty state
+================================= */
+
+.empty-state {
+    padding: 48px 20px;
+    text-align: center;
+    background: var(--surface);
+    border: 1px dashed #cbd6ca;
+    border-radius: 12px;
+}
+
+.empty-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 2.5rem;
+}
+
+.empty-state h3 {
+    margin: 0 0 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
+}
+
+.empty-state p {
+    max-width: 420px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+
+/* ==============================
+   9. Reading Journey
+================================= */
+
+.journey-section {
+    margin-bottom: 42px;
+}
+
+.journey-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.journey-stat {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f7f9f5;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.journey-stat-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: #e9eee4;
+    border-radius: 12px;
+    font-size: 1.5rem;
+}
+
+.journey-stat-label {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.journey-stat-value {
+    margin: 3px 0 0;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.stat-unit {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.session-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px;
+    background: var(--primary-light);
+    border-radius: 12px;
+}
+
+.session-action > div {
+    min-width: 0;
+}
+
+.session-action h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.session-action .btn {
+    flex-shrink: 0;
+}
+
+.calendar-section {
+    margin-top: 32px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.calendar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.calendar-heading h3 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.15rem;
+    text-align: center;
+}
+
+.calendar-nav {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    color: var(--primary);
+    background: var(--primary-light);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+.calendar-nav:hover {
+    background: #d6e4d8;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 7px;
+}
+
+.calendar-weekdays {
+    margin-bottom: 10px;
+}
+
+.calendar-weekdays span {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.calendar-day {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    min-height: 42px;
+    padding: 4px;
+    color: var(--text);
+    background: #f5f6f2;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 0.88rem;
+}
+
+.calendar-day:disabled {
+    color: #a3aba3;
+    background: transparent;
+}
+
+.calendar-day.has-session {
+    color: #fff;
+    background: var(--primary);
+    font-weight: 700;
+}
+
+.calendar-day.has-session:hover {
+    background: var(--primary-dark);
+}
+
+.calendar-day.is-today {
+    border-color: #9aab9a;
+    box-shadow: inset 0 0 0 1px #9aab9a;
+}
+
+.calendar-day.has-session.is-today {
+    border-color: #b9d6be;
+    box-shadow: inset 0 0 0 1px #b9d6be;
+}
+
+.calendar-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.reading-insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 24px;
+    padding: 20px;
+    background: #fbf5e8;
+    border: 1px solid #eee3c8;
+    border-radius: 12px;
+}
+
+.insight-icon {
+    flex-shrink: 0;
+    font-size: 1.5rem;
+}
+
+.reading-insight h3 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+}
+
+.reading-insight p {
+    margin: 0;
+    color: #625b49;
+    font-size: 0.9rem;
+}
+
+.privacy-note {
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+
+/* ==============================
+   10. Footer
+================================= */
+
+.site-footer {
+    padding: 10px 0 36px;
+    color: var(--muted);
+    font-size: 0.83rem;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 7px 0;
+}
+
+
+/* ==============================
+   11. Tablet layout
+================================= */
+
+@media (max-width: 800px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+
+/* ==============================
+   12. Mobile layout
+================================= */
+
+@media (max-width: 560px) {
+    .container,
+    .header-content {
+        width: calc(100% - 28px);
+    }
+
+    .header-content {
+        min-height: 66px;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .logo-icon {
+        font-size: 1.4rem;
+    }
+
+    .header-tagline {
+        max-width: 135px;
+        font-size: 0.75rem;
+        text-align: right;
+    }
+
+    .welcome-section {
+        padding: 30px 0 22px;
+    }
+
+    .welcome-section h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-text {
+        font-size: 0.93rem;
+    }
+
+    .panel {
+        padding: 20px 16px;
+    }
+
+    .section-heading h2 {
+        font-size: 1.4rem;
+    }
+
+    #book-form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #book-form > .btn {
+        width: 100%;
+    }
+
+    .stats-grid {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px 13px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-description {
+        font-size: 0.74rem;
+    }
+
+    .completion-panel {
+        padding: 17px;
+    }
+
+    .collection-heading {
+        align-items: flex-start;
+    }
+
+    .book-card {
+        padding: 18px;
+    }
+
+    .book-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .book-actions {
+        align-items: stretch;
+    }
+
+    .book-status-select {
+        flex-basis: 100%;
+    }
+
+    .btn-delete {
+        width: 100%;
+    }
+
+    .journey-stats {
+        gap: 10px;
+    }
+
+    .journey-stat {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px 12px;
+    }
+
+    .journey-stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .journey-stat-label {
+        font-size: 0.77rem;
+    }
+
+    .journey-stat-value {
+        font-size: 1.45rem;
+    }
+
+    .session-action {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 17px;
+    }
+
+    .session-action .btn {
+        width: 100%;
+        white-space: normal;
+    }
+
+    .calendar-section {
+        padding: 15px 10px;
+    }
+
+    .calendar-heading h3 {
+        font-size: 0.98rem;
+    }
+
+    .calendar-weekdays,
+    .calendar-grid {
+        gap: 3px;
+    }
+
+    .calendar-weekdays span {
+        font-size: 0.7rem;
+    }
+
+    .calendar-day {
+        min-height: 36px;
+        padding: 2px;
+        border-radius: 6px;
+        font-size: 0.78rem;
+    }
+
+    .reading-insight {
+        padding: 16px 13px;
+    }
+}
+
+
+/* ==============================
+   13. Reduced motion preference
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
